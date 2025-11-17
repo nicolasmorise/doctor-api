@@ -1,0 +1,172 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "My Doctor API",
+    "description": "API to receiver information in North Caroline to Fax and Call",
+    "version": "1.0.0"
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "paths": {
+    "/doctors": {
+      "get": {
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "referringLast": {
+                  "example": "any"
+                },
+                "referringFirst": {
+                  "example": "any"
+                },
+                "referringMI": {
+                  "example": "any"
+                },
+                "referringTitle": {
+                  "example": "any"
+                },
+                "referringAddress": {
+                  "example": "any"
+                },
+                "referringCity": {
+                  "example": "any"
+                },
+                "referringState": {
+                  "example": "any"
+                },
+                "referringZip": {
+                  "example": "any"
+                },
+                "referringClinic": {
+                  "example": "any"
+                },
+                "referringPhone": {
+                  "example": "any"
+                },
+                "referringFaxNo": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/doctors/{id}": {
+      "put": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "referringLast": {
+                  "example": "any"
+                },
+                "referringFirst": {
+                  "example": "any"
+                },
+                "referringMI": {
+                  "example": "any"
+                },
+                "referringTitle": {
+                  "example": "any"
+                },
+                "referringAddress": {
+                  "example": "any"
+                },
+                "referringCity": {
+                  "example": "any"
+                },
+                "referringState": {
+                  "example": "any"
+                },
+                "referringZip": {
+                  "example": "any"
+                },
+                "referringClinic": {
+                  "example": "any"
+                },
+                "referringPhone": {
+                  "example": "any"
+                },
+                "referringFaxNo": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  }
+}
