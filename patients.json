@@ -1,0 +1,32 @@
+[
+  {
+    "name": "John Doe",
+    "email": "john.doe@example.com",
+    "phone": "555-1234",
+    "dateOfBirth": "1988-05-21"
+  },
+  {
+    "name": "Maria da Silva",
+    "email": "maria.silva@gmail.com",
+    "phone": "555-5678",
+    "dateOfBirth": "1994-11-02"
+  },
+  {
+    "name": "Kevin Thompson",
+    "email": "kevin.t@example.com",
+    "phone": "555-9012",
+    "dateOfBirth": "1979-03-15"
+  },
+  {
+    "name": "Ana Pereira",
+    "email": "ana.pereira@hotmail.com",
+    "phone": "555-7854",
+    "dateOfBirth": "2001-07-09"
+  },
+  {
+    "name": "Luis Fernandez",
+    "email": "luis.fernandez@example.com",
+    "phone": "555-3344",
+    "dateOfBirth": "1990-09-28"
+  }
+]

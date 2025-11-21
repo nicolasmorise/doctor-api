@@ -3,7 +3,9 @@ const controller = require('../controller/controller');
 
 const { doctorValidationRules } = require('../middleware/doctorValidation');
 const { handleValidationErrors } = require('../middleware/validation');
+const ensureAuth = require('../middleware/ensureAuth');
 
+router.use(ensureAuth)
 
 router.get('/doctors', controller.getDoctorsDatas);
 
