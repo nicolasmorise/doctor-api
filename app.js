@@ -14,6 +14,7 @@ const authRoutes = require("./routes/authRoutes");
 const ensureAuth = require("./middleware/ensureAuth");
 const passport = require("passport");
 const patientRoutes = require("./routes/patientRoutes");
+const cors = require("cors");
 
 require("./auth/github");
 
