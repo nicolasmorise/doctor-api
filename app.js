@@ -17,6 +17,10 @@ const patientRoutes = require("./routes/patientRoutes");
 
 require("./auth/github");
 
+app.use(cors({
+  origin: "https://front-end-doctor-amber.vercel.app",  // your frontend
+  credentials: true
+}));
 
 app.use(
   session({
