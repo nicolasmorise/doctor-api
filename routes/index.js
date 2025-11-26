@@ -15,4 +15,6 @@ router.put('/doctors/:id', doctorValidationRules, handleValidationErrors, contro
 
 router.delete('/doctors/:id', controller.deleteDoctorData);
 
+router.get('/doctors/search', controller.findDoctorData);
+
 module.exports = router;

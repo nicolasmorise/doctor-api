@@ -19,7 +19,7 @@ const cors = require("cors");
 require("./auth/github");
 
 app.use(cors({
-  origin: "https://front-end-doctor-amber.vercel.app",  // your frontend
+  origin: "https://doctor-api-w54x.onrender.com",
   credentials: true
 }));
 
@@ -28,8 +28,14 @@ app.use(
     secret: process.env.SESSION_SECRET || "defaultsecret",
     resave: false,
     saveUninitialized: false,
+    cookie: {
+      httpOnly: true,
+      secure: true,       // important for localhost
+      sameSite: "none"      // works with http local frontend
+    }
   })
 );
+
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -37,11 +43,6 @@ app.use(passport.session());
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use(bodyParser.json());
-
-app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', "*");
-    next();
-})
 
 app.use("/auth", authRoutes);
 

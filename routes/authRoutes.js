@@ -9,7 +9,7 @@ router.get(
   "/github/callback",
   passport.authenticate("github", { failureRedirect: "/" }),
   (req, res) => {
-    res.redirect("https://front-end-doctor-amber.vercel.app/");
+    res.redirect("http://localhost:5500");
   }
 );
 
@@ -28,7 +28,7 @@ router.get("/logout", (req, res) => {
 
     req.session.destroy(() => {
       res.clearCookie("connect.sid");
-      res.redirect("https://front-end-doctor-amber.vercel.app");
+      res.redirect("http://localhost:5500");
     });
   });
 });

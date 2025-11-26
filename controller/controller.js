@@ -91,9 +91,43 @@ const deleteDoctorData = async (req, res, next) => {
   }
 };
 
+const findDoctorData = async (req, res, next) => {
+ try {
+    const { first, last } = req.query;
+
+    if (!first && !last) {
+      return res.status(400).json({
+        message: "At least one search parameter (first or last) is required."
+      });
+    }
+
+    const query = {};
+
+    if (first) {
+      query["Referring First"] = { $regex: first, $options: "i" };
+    }
+    if (last) {
+      query["Referring Last"] = { $regex: last, $options: "i" };
+    }
+
+    const doctors = await models.findDoctor(query);
+
+    if (!doctors || doctors.length === 0) {
+      return res.status(404).json({ message: "No doctors found." });
+    }
+
+    res.status(200).json(doctors);
+
+  } catch (err) {
+    console.error("Error searching doctors:", err);
+    res.status(500).json({ message: "Server error searching doctors." });
+  }
+}
+
 module.exports = {
   getDoctorsDatas,
   createDoctorData,
   updateDoctorData,
-  deleteDoctorData
+  deleteDoctorData,
+  findDoctorData
 };

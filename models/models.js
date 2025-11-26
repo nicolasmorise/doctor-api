@@ -29,4 +29,15 @@ async function deleteDoctor(id) {
     return result;
 }
 
-module.exports = { getDoctorsData, createDoctor, updateDoctor, deleteDoctor };
+async function findDoctor(query) {
+  const db = mongodb.getDb().db("new_project_db");
+
+  const result = await db
+    .collection("information")
+    .find(query)
+    .toArray();
+
+  return result;
+}
+
+module.exports = { getDoctorsData, createDoctor, updateDoctor, deleteDoctor, findDoctor };
