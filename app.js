@@ -27,13 +27,14 @@ app.use(cors({
 
 app.use(
   session({
-    secret: process.env.SESSION_SECRET || "defaultsecret",
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     cookie: {
       httpOnly: true,
-      secure: true,       // important for localhost
-      sameSite: "none"      // works with http local frontend
+      secure: true,         // must be true for HTTPS
+      sameSite: "none",     // Vercel <-> Render requires none
+      maxAge: 1000 * 60 * 60 * 24 * 7
     }
   })
 );
