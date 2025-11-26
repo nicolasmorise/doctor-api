@@ -18,8 +18,10 @@ const cors = require("cors");
 
 require("./auth/github");
 
+app.set("trust proxy", 1);
+
 app.use(cors({
-  origin: "https://doctor-api-w54x.onrender.com",
+  origin: "https://front-end-doctor-amber.vercel.app",
   credentials: true
 }));
 
