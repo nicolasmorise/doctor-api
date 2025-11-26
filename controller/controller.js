@@ -92,22 +92,30 @@ const deleteDoctorData = async (req, res, next) => {
 };
 
 const findDoctorData = async (req, res, next) => {
- try {
-    const { first, last } = req.query;
+  try {
+    const { first, last, q } = req.query;
 
-    if (!first && !last) {
+    let query = {};
+
+    if (first || last) {
+      // AND search
+      query = {};
+      if (first) query["Referring First"] = { $regex: first, $options: "i" };
+      if (last)  query["Referring Last"]  = { $regex: last,  $options: "i" };
+    } 
+    else if (q) {
+      // OR search
+      query = {
+        $or: [
+          { "Referring First": { $regex: q, $options: "i" } },
+          { "Referring Last":  { $regex: q, $options: "i" } }
+        ]
+      };
+    } 
+    else {
       return res.status(400).json({
-        message: "At least one search parameter (first or last) is required."
+        message: "At least one search parameter (first, last, or q) is required."
       });
-    }
-
-    const query = {};
-
-    if (first) {
-      query["Referring First"] = { $regex: first, $options: "i" };
-    }
-    if (last) {
-      query["Referring Last"] = { $regex: last, $options: "i" };
     }
 
     const doctors = await models.findDoctor(query);
@@ -122,7 +130,8 @@ const findDoctorData = async (req, res, next) => {
     console.error("Error searching doctors:", err);
     res.status(500).json({ message: "Server error searching doctors." });
   }
-}
+};
+
 
 module.exports = {
   getDoctorsDatas,
